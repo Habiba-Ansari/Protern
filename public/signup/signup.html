@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - StartupConnect</title>
+    <!-- <link rel="stylesheet" href="/signup-form-server/CSS/signup.css"> -->
+     <style>
+        /* sign-up.css */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #E6FBFE;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 26px;
+    text-align: center;
+}
+
+h3 {
+    color: #6EC3D6;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 14px;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-group input:focus, .form-group select:focus {
+    border-color: #6EC3D6;
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(110, 195, 214, 0.5);
+}
+
+.form-group input[type="submit"] {
+    background-color: #6EC3D6;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.form-group input[type="submit"]:hover {
+    background-color: #5bb2c6;
+}
+
+#studentErrorMessage, #msg1, #msg2 {
+    margin-top: 10px;
+    color: red;
+    font-size: 12px;
+}
+
+.toggle-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.toggle-link a {
+    color: #6EC3D6;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.toggle-link a:hover {
+    text-decoration: underline;
+}
+
+     </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Signup for StartupConnect</h2>
+    
+    <!-- User Type Selection -->
+    <div class="form-group">
+        <label for="userType">I am signing up as a:</label>
+        <select id="userType" onchange="toggleForm()">
+            <option value="student">Student</option>
+            <option value="startup">Startup Representative</option>
+        </select>
+    </div>
+
+    <!-- Student Signup Form -->
+    <form id="studentForm" action="/signup/student" method="POST">
+        <h3>Student Signup</h3>
+
+        <div class="form-group">
+            <label for="studentFullName">Full Name:</label>
+            <input type="text" id="studentFullName" name="studentFullName" required>
+        </div>
+
+        <div class="form-group">
+            <label for="studentEmail">Email:</label>
+            <input type="email" id="studentEmail" name="studentEmail" required>
+        </div>
+
+        <div class="form-group">
+            <label for="studentPassword">Password:</label>
+            <input type="password" id="studentPassword" name="studentPassword" required>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Signup as Student">
+        </div>
+        <div id="studentErrorMessage" style="color: red;"></div>
+    </form>
+
+    <!-- Startup Representative Signup Form -->
+    <form id="startupForm" action="/signup/startup" method="POST" style="display: none;">
+        <h3>Startup Representative Signup</h3>
+
+        <div class="form-group">
+            <label for="startupFullName">Startup Name:</label>
+            <input type="text" id="startupFullName" name="startupFullName" required>
+        </div>
+
+        <div class="form-group">
+            <label for="startupEmail">Email:</label>
+            <input type="email" id="startupEmail" name="startupEmail" required>
+        </div>
+
+        <div class="form-group">
+            <label for="startupPassword">Password:</label>
+            <input type="password" id="startupPassword" name="startupPassword" required>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Signup as Startup Representative">
+        </div>
+        <div id="startupErrorMessage" style="color: red;"></div>
+    </form>
+
+    <div class="toggle-link">
+        <a onclick="toggleForm()">Switch Signup Type</a>
+    </div>
+</div>
+
+<script>
+    // Function to toggle between student and startup forms
+    function toggleForm() {
+        var userType = document.getElementById("userType").value;
+        var studentForm = document.getElementById("studentForm");
+        var startupForm = document.getElementById("startupForm");
+
+        if (userType === "student") {
+            studentForm.style.display = "block";
+            startupForm.style.display = "none";
+        } else {
+            studentForm.style.display = "none";
+            startupForm.style.display = "block";
+        }
+    }
+
+    // Add event listener for student form submission
+    document.getElementById("studentForm").addEventListener("submit", async function(event) {
+        event.preventDefault(); // Prevent the form from submitting the default way
+
+        const formData = {
+            studentFullName: document.getElementById("studentFullName").value,
+            studentEmail: document.getElementById("studentEmail").value,
+            studentPassword: document.getElementById("studentPassword").value,
+        };
+
+        try {
+            const response = await fetch('/signup/student', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData) // Convert the form data to a JSON string
+            });
+
+            if (!response.ok) { // If response is not OK, handle errors
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Unknown error occurred');
+            }
+
+            const data = await response.json(); // Parse the JSON response
+            document.getElementById("studentErrorMessage").style.color = "green";
+            document.getElementById("studentErrorMessage").innerText = data.message;
+            window.location.assign('/login/startup');
+        } catch (error) {
+            document.getElementById("studentErrorMessage").innerText = error.message;
+        }
+    });
+
+    // Add event listener for startup form submission
+    document.getElementById("startupForm").addEventListener("submit", async function(event) {
+        event.preventDefault(); // Prevent the form from submitting the default way
+
+        const formData = {
+            startupFullName: document.getElementById("startupFullName").value,
+            startupEmail: document.getElementById("startupEmail").value,
+            startupPassword: document.getElementById("startupPassword").value,
+        };
+
+        try {
+            const response = await fetch('/signup/startup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData) // Convert the form data to a JSON string
+            });
+
+            if (!response.ok) { // If response is not OK, handle errors
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Unknown error occurred');
+            }
+
+            const data = await response.json(); // Parse the JSON response
+            document.getElementById("startupErrorMessage").style.color = "green";
+            document.getElementById("startupErrorMessage").innerText = data.message;
+            window.location.assign('/login/startup');
+            
+        } catch (error) {
+            document.getElementById("startupErrorMessage").innerText = error.message;
+        }
+    });
+</script>
+
+</body>
+</html>

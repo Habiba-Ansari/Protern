@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link 
+      rel="stylesheet" 
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      />
+    <link 
+    rel="stylesheet" 
+    href="../css/newstyles (3).css" 
+    />
+
+    <title>Filter</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff ;
+        }
+
+        .search-bar {
+            display: flex;
+            margin-top: 1px;
+            justify-content: center;
+            padding: 20px 50px; 
+            background-color: #d1e7f8;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header Styles */
+        
+
+        /* Search Bar Styles */
+        
+        .search-bar input {
+            width: 60%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .search-bar button {
+            background-color: #00c853;
+            color: white;
+            padding: 10px 20px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        .container {
+            display: flex;
+            padding: 20px;
+        }
+        .filter {
+            width: 250px;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+        }
+        .filter h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .filter label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .filter input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .filter .category, .filter .tags, .filter .salary {
+            margin-bottom: 20px;
+        }
+        .filter .location, .filter .job-type, .filter .experience, .filter .posted-date {
+            margin-bottom: 20px;
+        }
+        .filter .apply-filter {
+            display: block;
+            width: 100%;
+            background-color: #00c853;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        /* Job Listing Styles */
+        .job-listings {
+            flex: 1;
+        }
+        .job-listings-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .job-listings-header h2 {
+            font-size: 18px;
+            margin: 0;
+        }
+        .job-listings-header .sort-by {
+            display: flex;
+            align-items: center;
+        }
+        .job-listings-header .sort-by select {
+            margin-left: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .job-card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .job-card .job-info {
+            display: flex;
+            align-items: center;
+        }
+        .job-card .job-info img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        .job-card .job-info .job-details h4 {
+            font-size: 16px;
+            margin: 0;
+        }
+        .job-card .job-info .job-details p {
+            margin: 5px 0;
+            color: #888;
+        }
+        .job-card .job-info .job-details .tags {
+            display: flex;
+            gap: 10px;
+        }
+        .job-card .job-info .job-details .tags span {
+            background-color: #e0e0e0;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        .job-card .job-actions {
+            display: flex;
+            gap: 10px;
+        }
+        .apply-now, .full-description {
+            background-color: #00c853;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .pagination span {
+            margin: 0 5px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .pagination .active {
+            background-color: #00c853;
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <nav>
+        <div class="nav__header">
+          <div class="nav__logo">
+            <a href="#" class="logo">PRO<span>TERN</span></a>
+          </div>
+          <div class="nav__menu__btn" id="menu-btn">
+            <i class="ri-menu-line"></i>
+          </div>
+        </div>
+        <ul class="nav__links" id="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#job">Search</a></li>
+          <li class="dropdown-nav">
+            <a href="#">Resources </a>
+            <ul class="dropdown-menu">
+              <li><a href="interview.html">Events</a></li>
+              <li><a href="interview.html">Scholarships</a></li>
+              <li><a href="interview.html">Interview Preparation</a></li>
+              <li><a href="resbuilder.html">Resume Builder</a></li>
+              <li><a href="jobprepare.html">Career Planning</a></li>
+          </ul>
+          </li>
+          <li><a href="#client">Contact</a></li>
+          <li class="dropdown-nav">
+            <button class="btn">Profile</button>
+            <ul class="dropdown-menu">
+              <li><a href="interview.html">View Profile</a></li>
+              <li><a href="interview.html">Resume</a></li>
+              <li><a href="interview.html">Help</a></li>
+              <li><a href="resbuilder.html">Safety Tips</a></li>
+              <li><a href="jobprepare.html">Logout</a></li> 
+            </ul>         
+          </li>
+          </li>
+        </ul>
+      </nav>
+      
+    <!-- Search Bar Section -->
+    <div class="search-bar">
+        <input type="text" placeholder="Search jobs by title, company, or keyword..." id="searchInput">
+        <button onclick="searchJobs()">Search</button>
+    </div>
+
+    <!-- Main Content Section -->
+    <div class="container">
+        <!-- Filter Sidebar -->
+        <div class="filter">
+            <h3>Filter by</h3>
+            <!-- Category Section -->
+            <div class="category">
+                <h4>Category</h4>
+                <label><input type="checkbox" name="category"> Internship</label>
+                <label><input type="checkbox" name="category"> Full-time</label>
+                <label><input type="checkbox" name="category"> Part-time</label>
+            </div>
+
+            <!-- Location Section -->
+            <div class="location">
+                <h4>Location</h4>
+                <label><input type="checkbox" name="location"> Mumbai</label>
+                <label><input type="checkbox" name="location"> Pune</label>
+                <label><input type="checkbox" name="location"> Delhi</label>
+            </div>
+
+            <!-- Job Type Section -->
+            <div class="job-type">
+                <h4>Job Type</h4>
+                <label><input type="checkbox" name="jobType"> Remote</label>
+                <label><input type="checkbox" name="jobType"> On-site</label>
+                <label><input type="checkbox" name="jobType"> Hybrid</label>
+            </div>
+
+            <!-- Salary Section -->
+            <div class="salary">
+                <h4>Salary Range</h4>
+                <label><input type="checkbox" name="salary"> 10,000 - 20,000</label>
+                <label><input type="checkbox" name="salary"> 20,000 - 30,000</label>
+                <label><input type="checkbox" name="salary"> 30,000+</label>
+            </div>
+
+            <!-- Experience Section -->
+            <div class="experience">
+                <h4>Experience Level</h4>
+                <label><input type="checkbox" name="experience"> Fresher</label>
+                <label><input type="checkbox" name="experience"> 1-2 years</label>
+                <label><input type="checkbox" name="experience"> 3+ years</label>
+            </div>
+
+            <!-- Posted Date Section -->
+            <div class="posted-date">
+                <h4>Posted Date</h4>
+                <label><input type="checkbox" name="postedDate"> Last 24 hours</label>
+                <label><input type="checkbox" name="postedDate"> Last 7 days</label>
+                <label><input type="checkbox" name="postedDate"> Last 30 days</label>
+            </div>
+
+            <button class="apply-filter" onclick="applyFilter()">Apply Filter</button>
+        </div>
+
+        <!-- Job Listings Section -->
+        <div class="job-listings">
+            <div class="job-listings-header">
+                <h2>Available Jobs</h2>
+                <div class="sort-by">
+                    <label for="sort">Sort by:</label>
+                    <select name="sort" id="sort">
+                        <option value="date">Date</option>
+                        <option value="salary">Salary</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="job-card">
+                <div class="job-info">
+                    <img alt="Company logo" src="https://via.placeholder.com/50"/>
+                    <div class="job-details">
+                        <h4>Web Development</h4>
+                        <p>Location: Jakarta, Indonesia</p>
+                        <div class="tags">
+                            <span>Design</span>
+                            <span>UX/UI</span>
+                            <span>Full Time</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="job-actions">
+                    <!-- Redirects to apply form page -->
+                    <a href="ApplyForm.html" target="_blank" class="apply-now">Apply Now</a>
+                    
+                    <!-- Redirects to full job description page -->
+                    <a href="WebDevDes.html" target="_blank" class="full-description">Full Description</a>
+                </div>
+            </div>
+            
+            <div class="job-card">
+                <div class="job-info">
+                    <img alt="Company logo" src="https://via.placeholder.com/50"/>
+                    <div class="job-details">
+                        <h4>Software Engineering</h4>
+                        <p>Location: Jakarta, Indonesia</p>
+                        <div class="tags">
+                            <span>Design</span>
+                            <span>UX/UI</span>
+                            <span>Full Time</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="job-actions">
+                    <!-- Redirects to apply form page -->
+                    <a href="ApplyForm.html" target="_blank" class="apply-now">Apply Now</a>
+                    
+                    <!-- Redirects to full job description page -->
+                    <a href="SEDes.html" target="_blank" class="full-description">Full Description</a>
+                </div>
+            </div>
+
+            <div class="job-card">
+                <div class="job-info">
+                    <img alt="Company logo" src="https://via.placeholder.com/50"/>
+                    <div class="job-details">
+                        <h4>Data Analytics Intern</h4>
+                        <p>Location: Jakarta, Indonesia</p>
+                        <div class="tags">
+                            <span>Design</span>
+                            <span>UX/UI</span>
+                            <span>Full Time</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="job-actions">
+                    <!-- Redirects to apply form page -->
+                    <a href="ApplyForm.html" target="_blank" class="apply-now">Apply Now</a>
+                    
+                    <!-- Redirects to full job description page -->
+                    <a href="WebDevDes.html" target="_blank" class="full-description">Full Description</a>
+                </div>
+            </div>
+
+            <div class="job-card">
+                <div class="job-info">
+                    <img alt="Company logo" src="https://via.placeholder.com/50"/>
+                    <div class="job-details">
+                        <h4>Digital Marketing Intern</h4>
+                        <p>Location: Jakarta, Indonesia</p>
+                        <div class="tags">
+                            <span>Design</span>
+                            <span>UX/UI</span>
+                            <span>Full Time</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="job-actions">
+                    <!-- Redirects to apply form page -->
+                    <a href="ApplyForm.html" target="_blank" class="apply-now">Apply Now</a>
+                    
+                    <!-- Redirects to full job description page -->
+                    <a href="WebDevDes.html" target="_blank" class="full-description">Full Description</a>
+                </div>
+            </div>
+            
+            <div class="job-card">
+                <div class="job-info">
+                    <img alt="Company logo" src="https://via.placeholder.com/50"/>
+                    <div class="job-details">
+                        <h4>Business Development Intern</h4>
+                        <p>Location: Jakarta, Indonesia</p>
+                        <div class="tags">
+                            <span>Design</span>
+                            <span>UX/UI</span>
+                            <span>Full Time</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="job-actions">
+                    <!-- Redirects to apply form page -->
+                    <a href="ApplyForm.html" target="_blank" class="apply-now">Apply Now</a>
+                    
+                    <!-- Redirects to full job description page -->
+                    <a href="WebDevDes.html" target="_blank" class="full-description">Full Description</a>
+                </div>
+            </div>
+            
+            <div class="job-card">
+                <div class="job-info">
+                    <img alt="Company logo" src="https://via.placeholder.com/50"/>
+                    <div class="job-details">
+                        <h4>UI/UX Design Intern</h4>
+                        <p>Location: Jakarta, Indonesia</p>
+                        <div class="tags">
+                            <span>Design</span>
+                            <span>UX/UI</span>
+                            <span>Full Time</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="job-actions">
+                    <!-- Redirects to apply form page -->
+                    <a href="ApplyForm.html" target="_blank" class="apply-now">Apply Now</a>
+                    
+                    <!-- Redirects to full job description page -->
+                    <a href="WebDevDes.html" target="_blank" class="full-description">Full Description</a>
+                </div>
+            </div>
+            
+            <div class="job-card">
+                <div class="job-info">
+                    <img alt="Company logo" src="https://via.placeholder.com/50"/>
+                    <div class="job-details">
+                        <h4>Customer Support Intern</h4>
+                        <p>Location: Jakarta, Indonesia</p>
+                        <div class="tags">
+                            <span>Design</span>
+                            <span>UX/UI</span>
+                            <span>Full Time</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="job-actions">
+                    <!-- Redirects to apply form page -->
+                    <a href="ApplyForm.html" target="_blank" class="apply-now">Apply Now</a>
+                    
+                    <!-- Redirects to full job description page -->
+                    <a href="WebDevDes.html" target="_blank" class="full-description">Full Description</a>
+                </div>
+            </div>
+            
+
+
+    <script>
+        function searchJobs() {
+            var input = document.getElementById("searchInput").value;
+            if(input) {
+                alert("Searching for: " + input);
+            } else {
+                alert("Please enter a keyword to search");
+            }
+        }
+
+        function applyFilter() {
+            alert("Filter applied!");
+        }
+    </script>
+</body>
+</html>

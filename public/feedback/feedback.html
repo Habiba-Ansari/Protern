@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protern - Feedback Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f8f9fa;
+    }
+    .feedback-container {
+        max-width: 600px;
+        margin: 50px auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+    .feedback-container h2 {
+        font-size: 28px;
+        font-weight: bold;
+        color: #6EC3D6;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .btn-primary-custom {
+        background-color: #6EC3D6;
+        border: none;
+        width: 100%;
+        margin-top: 20px;
+    }
+    .form-group label {
+        font-weight: bold;
+        color: #333;
+    }
+    .form-control:focus {
+        border-color: #6EC3D6;
+        box-shadow: none;
+    }
+    </style>
+</head>
+<body>
+
+<div class="feedback-container">
+    <h2>Feedback Form</h2>
+    <form id="feedbacks" action="/feedbacks" method="POST">
+        <!-- Name Field -->
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="Name" placeholder="Enter your name" required>
+        </div>
+
+        <!-- Email Field -->
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+        </div>
+
+        <!-- Feedback Type Field -->
+        <div class="form-group">
+            <label for="feedbackType">Feedback Type</label>
+            <select class="form-control" id="feedbackType" required>
+                <option value="">Select feedback type</option>
+                <option value="bug">Report a Bug</option>
+                <option value="feature">Suggest a Feature</option>
+                <option value="general">General Feedback</option>
+            </select>
+        </div>
+
+        <!-- Rating Field -->
+        <div class="form-group">
+            <label for="rating">Rating</label>
+            <select class="form-control" id="rating" required>
+                <option value="">Rate our platform</option>
+                <option value="5">5 - Excellent</option>
+                <option value="4">4 - Good</option>
+                <option value="3">3 - Average</option>
+                <option value="2">2 - Fair</option>
+                <option value="1">1 - Poor</option>
+            </select>
+        </div>
+
+        <!-- Comments Field -->
+        <div class="form-group">
+            <label for="comments">Comments</label>
+            <textarea class="form-control" id="comments" rows="4" placeholder="Share your feedback here..." required></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary-custom">Submit Feedback</button>
+        <div id="ErrorMessage" style="color: red;"></div>
+    </form>
+</div>
+<script>
+    document.getElementById("feedbacks").addEventListener("submit", async function(event) {
+        event.preventDefault(); // Prevent the form from submitting the default way
+
+        const formData = {
+             Name:document.getElementById("Name").value,
+             email:document.getElementById("email").value,
+             feedbackType:document.getElementById("feedbackType").value,
+             rating:document.getElementById("rating").value,
+             comments:document.getElementById("comments").value
+        };
+
+        try {
+            const response = await fetch('/feedbacks', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData) // Convert the form data to a JSON string
+            });
+
+            if (!response.ok) { // If response is not OK, handle errors
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Unknown error occurred');
+            }
+
+            const data = await response.json(); // Parse the JSON response
+            document.getElementById("ErrorMessage").style.color = "green";
+            document.getElementById("ErrorMessage").innerText = data.message;
+        } catch (error) {
+            document.getElementById("ErrorMessage").innerText = error.message;
+        }
+    });
+</script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

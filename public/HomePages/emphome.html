@@ -1,0 +1,511 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link 
+      rel="stylesheet" 
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      />
+    <link 
+    rel="stylesheet" 
+    href="../css/empstyle.css" 
+    />
+
+
+    <title>Employer Homepage</title>
+
+
+  </head>
+  <body>
+    <nav>
+      <div class="nav__header">
+        <div class="nav__logo">
+          <a href="#" class="logo">PRO<span>TERN</span></a>
+        </div>
+        <div class="nav__menu__btn" id="menu-btn">
+          <i class="ri-menu-line"></i>
+        </div>
+      </div>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#job">Search</a></li>
+        <li class="dropdown-nav">
+          <a href="#">Resources </a>
+          <ul class="dropdown-menu">
+            <li><a href="/student/scholarship">Scholarships</a></li>
+            <li><a href="/startup/interview">Schedule interview</a></li>
+            <li><a href="resbuilder.html">Resume Builder</a></li>
+            <li><a href="jobprepare.html">Career Planning</a></li>
+        </ul>
+        </li>
+        <button class="post-btn" id="postjob" onclick="redirect()">+ Post Internship</button>
+        <li class="dropdown-nav">
+          <button class="btn">Profile</button>
+          <ul class="dropdown-menu">
+            <li><a href="interview.html">View Profile</a></li>
+            <li><a href="interview.html">Help</a></li>
+            <li><a href="resbuilder.html">Safety Tips</a></li>
+            <li><a href="jobprepare.html">Logout</a></li> 
+          </ul>         
+        </li>
+        </li>
+      </ul>
+    </nav>
+
+
+    
+    <header class="header__container" id="home" >
+      <div class="section__container " >
+        <img src="../images/hire.png" alt="header" class="hire-img"/>
+      <h2>
+        <img src="../images/bag.png" alt="bag" />
+        StartUp Internship Portal
+      </h2>
+      <h1>Unlock <br><span>Early-Career Talent</span><br>For your StartUp</h1>
+      <p>
+        Source, connect, and grow your brand with a community of ambitious students and graduates. 
+        Tap into a growing network of early-career professionals 
+        to find the perfect fit for your startup, efficiently and effortlessly.
+      </p>
+      </div>
+    </header>
+
+    <div class="section__container search" >
+      <a href="/hire" class="keyword">Hire Interns</a>
+    </div>
+        
+
+
+
+
+
+
+
+    <div class="stats section__container">
+      <div class="stat">
+        <div class="icon">
+          <img src="../images/candidate.gif" alt="Candidates Icon" class="stat-icon">     
+        </div>
+        <div>
+          <h2>+5,000</h2>
+          <p>Candidates looking for Internships</p>
+        </div>
+      </div>
+      <div class="stat">
+        <div class="icon">
+          <img src="../images/company.gif" alt="Company Icon" class="stat-icon">
+        </div>
+        <div>
+          <h2>+1,200</h2>
+          <p>StartUp Companies Hiring on Protern</p>
+        </div>
+      </div>
+      <div class="stat">
+        <div class="icon">
+          <img src="../images/profile.gif" alt="Profile Icon" class="stat-icon">
+        </div>
+        <div>
+          <h2>+8,000</h2>
+          <p>Interns Profiles</p>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+    <section class="section__container" id="about">
+      <div class="section__container steps__container">
+        <h2 class="section__header">
+          Get Interns in 4 <span>Quick Easy Steps</span>
+        </h2>
+        <p class="section__description">
+          "Discover Top Talent Effortlessly: 
+          Follow Our Simple, Step-by-Step Guide 
+          to Hire Skilled Interns and Build Your Team for Success."
+        </p>
+        <img src="../images/Hiring steps.jpg" alt="header" class="blob-img"/>
+        <div class="plain-box1"></div>
+        <div class="plain-box2"></div>
+        <div class="plain-box3"></div>
+        <div class="plain-box4"></div>
+        <div class="plain-box5"></div>
+        <div class="plain-box6"></div>
+        <div class="steps__grid">
+          <div class="steps__card">
+            <span><i class="ri-user-fill"></i></span>
+            <h4>1. Create an Account</h4>
+            <p>
+              Sign up in just a few clicks to gain exclusive access 
+              to a pool of talented interns eager to contribute to your team. 
+              It's quick, easy, and completely free—start building your future workforce today!
+            </p>
+          </div>
+          <div class="steps__card">
+            <span><i class="ri-search-fill"></i></span>
+            <h4>2. Search Candidates</h4>
+            <p>
+              Explore our extensive database of intern candidates tailored 
+              to your specific needs and preferences. With search ,
+               finding the ideal intern for your team has never been easier!
+            </p>
+          </div>
+        </div>
+      <div class="steps__grid">
+          <div class="steps__card">
+            <span><i class="ri-file-paper-fill"></i></span>
+            <h4>3. Post Internship</h4>
+            <p>
+              Easily create and share your internship opportunities 
+              to attract top talent. Highlight the key responsibilities and requirements, 
+              and let potential candidates know what makes your organization a great place to intern!
+            </p>
+          </div>
+          <div class="steps__card">
+            <span><i class="ri-briefcase-fill"></i></span>
+            <h4>4.Hire Interns</h4>
+            <p>
+              Make the final step in building your team by selecting the right interns 
+              for your organization. With the perfect candidates on board, 
+              you're ready to enhance your projects and drive your business forward!
+            </p>
+          </div>
+      </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <section class="section__container explore__container">
+      <h2 class="section__header">
+        <span>Countless Talented Interns</span> Are Ready to Elevate Your Team!
+      </h2>
+      <p class="section__description">
+        Discover a diverse pool of candidates eager to contribute 
+        and bring fresh ideas to your organization. Explore the 
+        talent that can help drive your projects forward!
+      </p>
+      <div class="explore__grid">
+        <div class="explore__card">
+          <span><i class="ri-pencil-ruler-2-fill"></i></span>
+          <h4>Design</h4>
+          <p>200+ Candidates</p>
+        </div>
+        <div class="explore__card">
+          <span><i class="ri-bar-chart-box-fill"></i></span>
+          <h4>Sales</h4>
+          <p>350+ Candidates</p>
+        </div>
+        <div class="explore__card">
+          <span><i class="ri-megaphone-fill"></i></span>
+          <h4>Marketing</h4>
+          <p>500+ Candidates</p>
+        </div>
+        <div class="explore__card">
+          <span><i class="ri-wallet-3-fill"></i></span>
+          <h4>Finance</h4>
+          <p>200+ Candidates</p>
+        </div>
+        <div class="explore__card">
+          <span><i class="ri-car-fill"></i></span>
+          <h4>Automobile</h4>
+          <p>250+ Candidates</p>
+        </div>
+        <div class="explore__card">
+          <span><i class="ri-truck-fill"></i></span>
+          <h4>Supply Chain</h4>
+          <p>1k+ Candidates</p>
+        </div>
+        <div class="explore__card">
+          <span><i class="ri-computer-fill"></i></span>
+          <h4>Computer Science</h4>
+          <p>100+ Candidates</p>
+        </div>
+        <div class="explore__card">
+          <span><i class="ri-building-fill"></i></span>
+          <h4>Engineering</h4>
+          <p>500+ Candidates</p>
+        </div>
+      </div>
+      <div class="explore__btn">
+        <button class="btn">View All Categories</button>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="section__container offer__container" id="service">
+      <h2 class="section__header">What We <span>Offer</span></h2>
+      <p class="section__description">
+        Explore the Benefits and Services We Provide to Enhance Your Internship Search
+        and Career Success
+      </p>
+      <div class="offer__grid">
+        <div class="offer__card">
+          <img src="../images/offer-1.jpg" alt="offer" />
+          <div class="offer__details">
+            <span>01</span>
+            <div>
+              <h4>Easy Job Posting</h4>
+              <p> A straightforward interface for employers to quickly 
+                  create and publish internship listings.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="offer__card">
+          <img src="../images/offer-2.jpg" alt="offer" />
+          <div class="offer__details">
+            <span>02</span>
+            <div>
+              <h4>Candidate Profiles</h4>
+              <p>Access to searchable profiles of interns, 
+                complete with resumes and skills, to find the right match easily.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="offer__card">
+          <img src="../images/offer-3.jpg" alt="offer" />
+          <div class="offer__details">
+            <span>03</span>
+            <div>
+              <h4>Application Tracking</h4>
+              <p>A basic dashboard to track applications and 
+                manage candidate applications in one place.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="section__container client__container" id="client">
+      <h2 class="section__header">What Our <span style="color: #fa6021;">Client Say</span></h2>
+      <p class="section__description">
+        Read Testimonials from Our Satisfied Intern Seekers to See How We Make a Difference
+      </p>
+      <!-- Slider main container -->
+      <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <div class="client__card">
+              <img src="../images/livspace.jpg" alt="client" />
+              <p>
+                This platform is user-friendly and efficient for hiring interns. 
+                The quick registration and intuitive search filters make it easy 
+                to find qualified candidates. Posting internships is straightforward, 
+                allowing us to showcase our company culture effectively. Overall, 
+                it has streamlined our hiring process and connected us with talented interns. 
+                Highly recommend!
+              </p>
+              <div class="client__ratings">
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+              </div>
+              <h4>Livspace</h4>
+              <h5>Pune</h5>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="client__card">
+              <img src="../images/Stockgro.png" alt="client" />
+              <p>
+                I had a great experience using this platform to hire interns. 
+                The registration was quick, and the candidate search options are excellent. 
+                Posting internships was a breeze, and the quality of applicants 
+                exceeded our expectations. This site has made our hiring process much smoother. 
+                Highly recommend for any employer!
+              </p>
+              <div class="client__ratings">
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-half-fill"></i></span>
+              </div>
+              <h4>StockGro</h4>
+              <h5>Mumbai</h5>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="client__card">
+              <img src="../images/dotpe.png" alt="client" />
+              <p>
+                This website has been a game changer for our internship program. 
+                The easy navigation and effective filters helped us find the right candidates fast. 
+                Posting our internship openings was simple, and we've received many enthusiastic 
+                applications. It's a fantastic resource for employers looking to build a strong team!
+              </p>
+              <div class="client__ratings">
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+              </div>
+              <h4>DotPe</h4>
+              <h5>Mumbai</h5>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-prev">
+        </div>
+        <div class="swiper-button-next">
+        </div>
+      </div>
+    </section>
+    
+
+
+
+
+
+
+
+
+
+
+    <footer class="footer">
+      <div class="section__container footer__container">
+        <div class="footer__col">
+          <div class="footer__logo">
+            <a href="#" class="logo">PRO<span>TERN</span></a>
+          </div>
+          <p>
+            Our platform is tailored to help you discover exceptional talent, 
+            empowering you to realize your professional aspirations and drive your success.
+          </p>
+        </div>
+        <div class="footer__col">
+          <h4>Quick Links</h4>
+          <ul class="footer__links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Search</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Follow Us</h4>
+          <ul class="footer__links">
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Youtube</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Contact Us</h4>
+          <ul class="footer__links">
+            <li>
+              <a href="#">
+                <span><i class="ri-phone-fill"></i></span> +91 70219 08374
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span><i class="ri-map-pin-2-fill"></i></span> Ramnarain Ruia Autonomous College, Matunga(E), Mumbai
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bar">
+        Copyright © 2024 Protern A StartUp Internship Platform. All rights reserved.
+      </div>
+    </footer>
+
+
+
+
+
+
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="main.js"></script>
+    <script>
+      function redirect() {
+          window.location.href = '/startup/postjob'; 
+       }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Job Form</title>
+
+    <link 
+    rel="stylesheet" 
+    href="../css/empstyle.css" 
+    />
+    
+    <style>
+
+
+
+/* Main Content */
+.container, .section, .company-section, .form-container {
+    background: #e7d7ff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px; /* Add space between sections */
+    max-width: 1200px; /* Ensure consistent width for all sections */
+    margin:auto;
+    padding: 5rem 1rem;
+    
+}
+
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.form-group textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+.button-group {
+    display: flex;
+}
+
+.experience-button {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px 15px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.experience-button.selected {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
+.section {
+    margin-top: 20px;
+}
+
+.company-section {
+    margin-top: 20px;
+}
+
+.note {
+    color: #777;
+    font-size: 12px;
+}
+
+.submit-btn {
+    background-color:var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    margin-left: 500px;
+}
+
+.submit-btn:hover {
+    background-color: #ff9a47;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .header-menu {
+        flex-direction: column;
+    }
+
+    .header-menu li {
+        margin: 10px 0;
+    }
+
+    .header-right {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .header-logo img {
+        height: 30px;
+    }
+
+    .bell-icon img,
+    .profile-icon {
+        height: 20px;
+        margin: 0 5px;
+    }
+}
+
+    </style>
+
+</head>
+<body class="section-container">
+
+
+
+<!-- Header Section (Navigation Bar) -->
+<nav>
+    <div class="nav__header">
+      <div class="nav__logo">
+        <a href="emphome.html" class="logo">PRO<span>TERN</span></a>
+      </div>
+      <div class="nav__menu__btn" id="menu-btn">
+        <i class="ri-menu-line"></i>
+      </div>
+    </div>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="/Home/Startup">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="#job">Search</a></li>
+      <button class="post-btn">+ Post Internship</button>
+      <li class="dropdown-nav">
+        <button class="btn">Profile</button>
+        <ul class="dropdown-menu">
+          <li><a href="interview.html">View Profile</a></li>
+          <li><a href="interview.html">Help</a></li>
+          <li><a href="/safetyTips">Safety Tips</a></li>
+          <li><a href="jobprepare.html">Logout</a></li> 
+        </ul>         
+      </li>
+      </li>
+    </ul>
+  </nav>
+
+
+
+
+
+
+
+  <h1 style="text-align: center; padding-top: 30px;">Internship Details</h1>
+
+
+<form id="jobForm" >
+<!-- Main Content Section -->
+<div class="container">
+    <!-- Job Details Section -->
+    <div class="header">
+    </div>
+
+    <div class="form-group">
+        <label for="job-title">Internship Title <span style="color: red;">*</span></label>
+        <input type="text" id="job-title" placeholder="Enter the Internship Title" required>
+    </div>
+
+    <div class="form-group">
+        <label for="job-description">Internship Description <span style="color: red;">*</span></label>
+        <textarea id="job-description" placeholder="Description"></textarea>
+        <div class="note">Please give complete description about your Internship</div>
+    </div>
+
+    <!-- Pick State and City Dropdowns -->
+    <div class="form-group">
+        <label for="state">Pick State <span style="color: red;">*</span></label>
+        <select id="state" required>
+            <option value="">Select State</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="city">Pick a City <span style="color: red;">*</span></label>
+        <select id="city" required disabled>
+            <option value="">Select City</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="no-of-openings">No Of Openings <span style="color: red;">*</span></label>
+        <input type="text" id="no-of-openings" placeholder="Eg. 2" required>
+    </div>
+</div>
+
+<!-- Candidate Requirement Section -->
+<div class="section">
+    <h2>Candidate Requirement</h2>
+    <div class="form-group">
+        <label>Total Experience of Candidate <span style="color: red;">*</span></label>
+        <div class="button-group">
+            <button class="experience-button" data-type="any">Any</button>
+            <button class="experience-button" data-type="freshers">Freshers Only</button>
+            <button class="experience-button" data-type="experienced">Experienced Only</button>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Monthly In-hand Stipend <span></span> (Only Put Actual Stipend)</label>
+        <input type="text" placeholder="Eg. 10000"> <span>to</span>
+        <input type="text" placeholder="Eg. 15000">
+    </div>
+
+
+    <div class="form-group">
+        <label>Skills <span style="color: red;">*</span></label>
+        <div id="skill-inputs">
+            <select class="skill">
+                <option value="">Select a skill</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="Python">Python</option>
+                <option value="Java">Java</option>
+                <option value="C++">C++</option>
+                <option value="C#">C#</option>
+                <option value="HTML">HTML</option>
+                <option value="CSS">CSS</option>
+                <option value="PHP">PHP</option>
+                <option value="SQL">SQL</option>
+                <option value="Ruby">Ruby</option>
+                <option value="Swift">Swift</option>
+                <option value="Kotlin">Kotlin</option>
+                <option value="TypeScript">TypeScript</option>
+                <option value="Angular">Angular</option>
+                <option value="React">React</option>
+                <option value="Vue">Vue</option>
+                <option value="Node.js">Node.js</option>
+                <option value="Django">Django</option>
+                <option value="Spring">Spring</option>
+                <option value="Flutter">Flutter</option>
+                <option value="Others">Others</option>
+            </select>
+        </div>
+        <button id="add-skill" type="button">Add Skill</button>
+    </div>
+    
+    
+
+</div>
+
+<!-- Personal Details Section -->
+<div class="section">
+    <h2>Industry</h2>
+    <div class="form-group">
+        <label>Preferred Industry</label>
+        <div id="industry-inputs">
+            <input type="text" class="preferred-industry" placeholder="eg. Marketing, Finance, IT">
+        </div>
+        <button id="add-industry" type="button">Add Industry</button>
+    </div>
+
+
+    <!-- Terms and Conditions Acceptance -->
+    <div>
+        <p style="text-align: center; padding-bottom: 20px;"> ensure all details provided are correct and up-to-date. Once submitted, you will not be able to edit the job.</p>
+    <button class="submit-btn">Post Internship</button>
+    </div>
+</div>  
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+        // Populate State Dropdown
+        document.addEventListener('DOMContentLoaded', function () {
+            const states = [
+                'Maharashtra', 'Gujarat', 'Rajasthan', 'Karnataka', 'Tamil Nadu', 'Delhi', 'Uttar Pradesh'
+            ];
+        
+            const stateSelect = document.getElementById('state');
+            states.forEach(state => {
+                const option = document.createElement('option');
+                option.value = state;
+                option.textContent = state;
+                stateSelect.appendChild(option);
+            });
+        
+            // Handle State Selection
+            stateSelect.addEventListener('change', function () {
+                const state = this.value;
+                const citySelect = document.getElementById('city');
+                citySelect.innerHTML = '<option value="">Select City</option>';
+                citySelect.disabled = !state;
+    
+                if (state) {
+                    const cities = {
+                        'Maharashtra': ['Mumbai', 'Pune', 'Nagpur'],
+                        'Gujarat': ['Ahmedabad', 'Surat', 'Vadodara'],
+                        'Rajasthan': ['Jaipur', 'Udaipur', 'Jodhpur'],
+                        'Karnataka': ['Bengaluru', 'Mysuru', 'Hubli'],
+                        'Tamil Nadu': ['Chennai', 'Coimbatore', 'Madurai'],
+                        'Delhi': ['Delhi'],
+                        'Uttar Pradesh': ['Lucknow', 'Kanpur', 'Agra']
+                    };
+    
+                    if (cities[state]) {
+                        cities[state].forEach(city => {
+                            const option = document.createElement('option');
+                            option.value = city;
+                            option.textContent = city;
+                            citySelect.appendChild(option);
+                        });
+                    }
+                }
+            });
+    
+            // Handle Experience Buttons
+            const experienceButtons = document.querySelectorAll('.experience-button');
+            experienceButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    experienceButtons.forEach(btn => btn.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+            });
+    
+            // Add Skill Input Fields
+            document.getElementById('add-skill').addEventListener('click', function () {
+                const skillInputs = document.getElementById('skill-inputs');
+    
+                // Create a new div for the skill dropdown
+                const newDiv = document.createElement('div');
+                newDiv.classList.add('form-group');
+    
+                // Create the new select dropdown for the skill
+                const newSelect = document.createElement('select');
+                newSelect.classList.add('form-control', 'skill');
+                newSelect.innerHTML = `
+                    <option value="">Select a skill</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="Python">Python</option>
+                    <option value="Java">Java</option>
+                    <option value="C++">C++</option>
+                    <option value="C#">C#</option>
+                    <option value="HTML">HTML</option>
+                    <option value="CSS">CSS</option>
+                    <option value="PHP">PHP</option>
+                    <option value="SQL">SQL</option>
+                    <option value="Ruby">Ruby</option>
+                    <option value="Others">Others</option>
+                `;
+                
+                // Create a remove button
+                const removeButton = document.createElement('button');
+                removeButton.type = 'button';
+                removeButton.textContent = 'Remove';
+                removeButton.classList.add('remove-skill');
+    
+                // Append the select dropdown and remove button to the new div
+                newDiv.appendChild(newSelect);
+                newDiv.appendChild(removeButton);
+    
+                // Append the new div to the skill inputs container
+                skillInputs.appendChild(newDiv);
+    
+                // Add event listener to the remove button
+                removeButton.addEventListener('click', function () {
+                    skillInputs.removeChild(newDiv);
+                });
+            });
+    
+            // Add Industry Input Fields
+            document.getElementById('add-industry').addEventListener('click', function () {
+                const industryInputs = document.getElementById('industry-inputs');
+    
+                // Create a new div for the industry input
+                const newDiv = document.createElement('div');
+                newDiv.classList.add('form-group');
+    
+                // Create the new input field for the industry
+                const newInput = document.createElement('input');
+                newInput.type = 'text';
+                newInput.classList.add('preferred-industry');
+                newInput.placeholder = 'Type to search for industries';
+    
+                // Create a remove button for the industry input
+                const removeButton = document.createElement('button');
+                removeButton.type = 'button';
+                removeButton.textContent = 'Remove';
+                removeButton.classList.add('remove-industry');
+    
+                // Append the input field and remove button to the new div
+                newDiv.appendChild(newInput);
+                newDiv.appendChild(removeButton);
+    
+                // Append the new div to the industry inputs container
+                industryInputs.appendChild(newDiv);
+    
+                // Add event listener to the remove button
+                removeButton.addEventListener('click', function () {
+                    industryInputs.removeChild(newDiv);
+                });
+            });
+        });
+        
+        document.getElementById('jobForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form from submitting the traditional way
+
+    // Collect form data
+    const jobTitle = document.getElementById('job-title').value;
+    const jobDescription = document.getElementById('job-description').value;
+    const state = document.getElementById('state').value;
+    const city = document.getElementById('city').value;
+    const noOfOpenings = document.getElementById('no-of-openings').value;
+    
+    // Collect experience type
+    const selectedExperience = document.querySelector('.experience-button.active')?.getAttribute('data-type') || 'any';
+    
+    // Collect skills
+    const skills = Array.from(document.querySelectorAll('.skill')).map(skillSelect => skillSelect.value);
+
+    // Collect stipend
+    const stipendFrom = document.querySelectorAll('input[type="text"]')[2].value;
+    const stipendTo = document.querySelectorAll('input[type="text"]')[3].value;
+    
+    // Collect preferred industries
+    const industries = Array.from(document.querySelectorAll('.preferred-industry')).map(input => input.value);
+
+    // Prepare the data to send
+    const internshipData = {
+      title: jobTitle,
+      description: jobDescription,
+      location: { state, city },
+      openings: noOfOpenings,
+      experience: selectedExperience,
+      stipend: { from: stipendFrom, to: stipendTo },
+      skills: skills,
+      industries: industries
+    };
+
+    // Send the data using fetch to the backend route
+    fetch('/postinternship', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(internshipData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Handle success or error
+      console.log('Success:', data);
+      alert('Internship posted successfully!');
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      alert('There was an error posting the internship.');
+    });
+  });
+
+
+    </script>

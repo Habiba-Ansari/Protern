@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Preview and Edit - The Interns</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link 
+    rel="stylesheet" 
+    href="newstyles.css">
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+            flex-direction: column; /* Stack items vertically */
+            min-height: 100vh; /* Ensure full viewport height */
+            margin: 0;
+            background-color: #f4f4f4; /* Optional: change background color */
+        }
+
+
+        .container {
+            background-color: #eedfff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+            width: 600px;
+            text-align: center;
+            margin-top: 20px; 
+            
+            /* Added top margin */
+        }
+
+        h2 {
+            color: #b879ff;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #b879ff;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 10px 0;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .form-group textarea {
+            resize: none;
+            height: 80px;
+        }
+
+        .inline-fields {
+            display: flex;
+            align-items: center;
+        }
+
+        button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: #fa6021;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        button:hover {
+            background-color: #e8551c;
+        }
+
+        #editBtn, #saveBtn, #previewBtn {
+    background-color: #fa6021; /* Same orange color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px ; /* Wider buttons */
+    cursor: pointer;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 100%; /* Full width */
+}
+
+#editBtn:hover, #saveBtn:hover, #previewBtn:hover {
+    background-color: #e8551c; /* Darker shade on hover */
+}
+
+.preview-section {
+    margin-top: 20px;
+    padding: 20px;
+    text-align: left;
+    background-color: #f9f9f9;
+    box-shadow: none; /* Remove shadow */
+    border: none; /* Remove border */
+}
+
+.preview-section h3 {
+    font-weight: bold;
+            color: #b879ff;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 24px;
+            
+}
+
+.preview-content {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.preview-content p {
+    margin: 5px 0;
+}
+
+.preview-content ul {
+    padding-left: 20px;
+    margin: 5px 0;
+}
+
+.preview-content ul li {
+    margin-bottom: 5px;
+}
+
+.confirmation-message {
+    display: none;
+    margin-top: 10px;
+    color: green;
+    font-weight: bold;
+}
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav__header">
+            <div class="nav__logo">
+                <a href="#" class="logo">PRO<span>TERN</span></a>
+            </div>
+            <div class="nav__menu__btn" id="menu-btn">
+                <i class="ri-menu-line"></i>
+            </div>
+        </div>
+        <ul class="nav__links" id="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#job">Search</a></li>
+            <li class="dropdown-nav">
+                <a href="#">Resources</a>
+                <ul class="dropdown-menu">
+                    <li><a href="interview.html">Events</a></li>
+                    <li><a href="interview.html">Scholarships</a></li>
+                    <li><a href="interview.html">Interview Preparation</a></li>
+                    <li><a href="resbuilder.html">Resume Builder</a></li>
+                    <li><a href="jobprepare.html">Career Planning</a></li>
+                </ul>
+            </li>
+            <li><a href="#client">Contact</a></li>
+            <li class="dropdown-nav">
+                <button class="btn">Profile</button>
+                <ul class="dropdown-menu">
+                    <li><a href="interview.html">View Profile</a></li>
+                    <li><a href="interview.html">Resume</a></li>
+                    <li><a href="interview.html">Help</a></li>
+                    <li><a href="resbuilder.html">Safety Tips</a></li>
+                    <li><a href="jobprepare.html">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    
+        <div class="container">
+            <h2>Create Your Profile</h2>
+    
+            <form id="profileForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name">
+                </div>
+    
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+    
+                <div class="form-group">
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city" placeholder="Enter your city">
+                </div>
+    
+                <div class="form-group">
+                    <label for="college">College:</label>
+                    <input type="text" id="college" name="college" placeholder="Enter your college">
+                </div>
+    
+                <div class="form-group education-fields">
+                    <label>Education:</label>
+                    <div class="inline-fields">
+                        <input type="text" name="education[]" placeholder="Add Education">
+                        <button type="button" onclick="addField('education')">+</button>
+                    </div>
+                </div>
+    
+                <div class="form-group experience-fields">
+                    <label>Experience:</label>
+                    <div class="inline-fields">
+                        <input type="text" name="experience[]" placeholder="Add Experience">
+                        <button type="button" onclick="addField('experience')">+</button>
+                    </div>
+                </div>
+    
+                <div class="form-group skills-fields">
+                    <label>Skills:</label>
+                    <div class="inline-fields">
+                        <input type="text" name="skills[]" placeholder="Add Skills">
+                        <button type="button" onclick="addField('skills')">+</button>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label for="achievements">Achievements:</label>
+                    <input type="text" id="achievements" name="achievements" placeholder="Enter your achievements">
+                </div>
+    
+                <button type="button" id="previewBtn" onclick="previewProfile()">Preview</button>
+            </form>
+    
+            <div class="preview-section" id="previewSection" style="display:none;">
+                <h3 id="previewHeading">Profile Preview</h3>
+                <div class="preview-content" id="previewContent"></div>
+                <button id="editBtn" onclick="editProfile()">Edit</button>
+                <button id="saveBtn" onclick="saveProfile()">Save</button>
+            </div>
+        </div>
+    
+        <script>
+            function addField(section) {
+                const container = document.querySelector(`.${section}-fields`);
+                const inputField = document.createElement('div');
+                inputField.className = 'inline-fields';
+                
+                const newInput = document.createElement('input');
+                newInput.type = 'text';
+                newInput.placeholder = `Add more ${section}`;
+                newInput.name = `${section}[]`;
+    
+                const button = document.createElement('button');
+                button.innerText = '-';
+                button.onclick = function() {
+                    inputField.remove();
+                };
+    
+                inputField.appendChild(newInput);
+                inputField.appendChild(button);
+                container.appendChild(inputField);
+            }
+    
+            function previewProfile() {
+                const form = document.getElementById('profileForm');
+                const previewContent = document.getElementById('previewContent');
+                const formData = new FormData(form);
+    
+                let content = `
+                    <p><strong>Name:</strong> ${formData.get('name')}</p>
+                    <p><strong>Gender:</strong> ${formData.get('gender')}</p>
+                    <p><strong>City:</strong> ${formData.get('city')}</p>
+                    <p><strong>College:</strong> ${formData.get('college')}</p>
+                    <p><strong>Education:</strong></p><ul>
+                `;
+                formData.getAll('education[]').forEach(education => content += `<li>${education}</li>`);
+                content += '</ul><p><strong>Experience:</strong></p><ul>';
+                formData.getAll('experience[]').forEach(experience => content += `<li>${experience}</li>`);
+                content += '</ul><p><strong>Skills:</strong></p><ul>';
+                formData.getAll('skills[]').forEach(skill => content += `<li>${skill}</li>`);
+                content += `</ul><p><strong>Achievements:</strong> ${formData.get('achievements')}</p>`;
+    
+                previewContent.innerHTML = content;
+    
+                form.style.display = 'none';
+                document.getElementById('previewSection').style.display = 'block';
+            }
+    
+            function editProfile() {
+                document.getElementById('profileForm').style.display = 'block';
+                document.getElementById('previewSection').style.display = 'none';
+            }
+    
+            function saveProfile() {
+                const previewHeading = document.getElementById('previewHeading');
+                previewHeading.textContent = "Your Profile";
+    
+                const editButton = document.getElementById('editBtn');
+                const saveButton = document.getElementById('saveBtn');
+                editButton.style.display = 'none'; // Hide the Edit button
+                saveButton.style.display = 'none'; // Hide the Save button
+            }
+        </script>
+    </body>
+    
+
+</html>

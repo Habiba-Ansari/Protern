@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarship</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #004080; 
+            padding: 15px 0;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+        }
+
+        nav.scrolled {
+            background-color: #002060; 
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 18px;
+            padding: 10px 15px;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            background-color: #ffffff;
+            color: #004080;
+        }
+
+        .navbar .apply-now {
+            margin-left: auto;
+        }
+
+        .navbar .apply-button {
+            background-color: #2ba9e1;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .navbar .apply-button:hover {
+            background-color: #1a799b;
+        }
+
+        #content {
+            padding-top: 100px; 
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        section {
+            padding: 60px 20px;
+            min-height: 100vh;
+            text-align: left;
+        }
+
+        section h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #004080;
+        }
+
+        section p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+
+        section ul {
+            text-align: left;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        section ul li {
+            font-size: 1em;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        section ul li::before {
+            content: "\2022"; 
+            position: absolute;
+            left: 0;
+            color: #004080;
+            font-size: 1.5em;
+        }
+
+        .floating-apply-button {
+            position: fixed;
+            bottom: 3%;
+            right: 3%;
+            background-color: #00008B;
+            color: white;
+            padding: 1.5vw 3vw;
+            text-decoration: none;
+            border-radius: 1vw;
+            font-size: 2vw;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.3s;
+            z-index: 1000;
+        }
+
+        .floating-apply-button:hover {
+            background-color: #1a799b;
+            transform: translateY(-2px);
+        }
+
+        #Scholarship {
+            background-image: url('pi.png');             
+            background-size: cover;             
+            background-position: center; 
+            background-repeat: no-repeat; 
+            padding: 60px 20px; 
+            color: black; 
+        }
+
+        #check-eligibility {
+            background-image: url('pi.png');             
+            background-size: cover;             
+            background-position: center; 
+            background-repeat: no-repeat; 
+            padding: 60px 20px; 
+            color: black; 
+        }
+
+        #apply {
+            background-image: url('pi.png');             
+            background-size: cover;             
+            background-position: center; 
+            background-repeat: no-repeat; 
+            padding: 60px 20px; 
+            color: black; 
+        }
+
+        .scholarship-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .scholarship-type {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .scholarship-type h3 {
+            color: #004080;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .scholarship-type p {
+            color: #666666;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .scholarship-type .apply-link {
+            text-decoration: none;
+            background-color: #004080;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .scholarship-type .apply-link:hover {
+            background-color: #1a799b;
+        }
+
+        .scholarship-type:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            nav ul li a {
+                font-size: 16px;
+            }
+
+            .scholarship-types {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <ul>
+            <li><a href="#Scholarship">SCHOLARSHIP</a></li>
+            <li><a href="#check-eligibility">CHECK ELIGIBILITY</a></li>
+            <li><a href="#apply">APPLY NOW</a></li>       
+        </ul>
+    </nav>
+    <div id="content">
+        <section id="Scholarship">
+            <h1>Scholarship </h1>
+            <p><b>Welcoming </b>you with our mission to support talented students by providing <br>financial assistance to help them achieve their educational goals. Explore the <br>various scholarships we offer and find the one that fits your needs</p>
+	   <b>Scholarship Categories:</b><br>
+	   We offer scholarships in various categories. Browse through our categories to find the perfect fit for you:</p>
+<b>Academic Excellence Scholarships<br>
+   Need-Based Scholarships<br>
+   Field-Specific Scholarship<br>
+   Merit-Based Scholarship 
+</b></ul>
+	       </section>
+
+        <section id="check-eligibility">
+            <h1>Scholarship Eligibility Criteria</h1>
+            <b>Before applying for our internship scholarships,<br> please review the eligibility criteria below to ensure you meet the requirements.</b>
+            <h2>Basic Eligibility Requirements</h2>
+
+            <ul><li>Must be a current student or recent graduate (within the last 12 months) from an accredited college or university.</li>
+
+                <li>Must have a minimum cumulative GPA of 3.0 on a 4.0 scale.</li>
+                <li>Must be enrolled in or have completed an internship related to your field of study.</li>
+
+                <li>Must be a legal resident or citizen of the country where the internship is being offered.</li>
+            </ul>
+
+            <h2>Additional Requirements</h2>
+            <ul>
+                <li>Submit a completed application form by the specified deadline.</li>
+                <li>Provide a current resume highlighting your educational background and internship experience.</li>
+                <li>Submit a personal statement or essay explaining your career goals and how the scholarship will help you achieve them.</li>
+                <li>Provide two letters of recommendation from professors, employers, or internship supervisors.</li>
+            </ul>
+
+            <h2>Important Notes</h2>
+            <p>Meeting the above criteria does not guarantee selection. Scholarships are awarded based on a combination of academic performance, internship experience, and the quality of your application. We encourage all eligible candidates to apply!</p>
+        </section>
+
+        <section id="apply">
+            <h1>Apply for Scholarship</h1>
+            <p>Explore the different types of scholarships we offer and apply through the respective links below.</p>
+
+            <div class="scholarship-types">
+                <div class="scholarship-type">
+                    <h3>Merit-Based Scholarship</h3>
+                    <p>This scholarship is awarded to students with outstanding academic achievements. Apply now to further your education and career.</p>          
+		</div>
+
+                <div class="scholarship-type">
+                    <h3>Subject Specific Scholarship</h3>
+                    <p>These scholarships are awarded to students who are studying in a particular field. Apply today!</p>
+                </div>
+
+                <div class="scholarship-type">
+                    <h3>Community Service Scholarship</h3>
+                    <p>For students who have shown a commitment to serving their communities. Apply now to continue making a difference.</p>
+                </div>
+
+                <div class="scholarship-type">
+                    <h3>Financial Need Scholarship</h3>
+                    <p>This scholarship is designed for students who require financial assistance to pursue their internships. Apply now to ease your financial burden.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Floating Apply Now Button -->
+    <a href="apply.html" class="floating-apply-button">Apply Now</a>
+    <script>
+        window.onscroll = function() {
+            var navbar = document.getElementById("navbar");
+            if (window.pageYOffset > 50) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        };
+    </script>
+</body>
+</html>

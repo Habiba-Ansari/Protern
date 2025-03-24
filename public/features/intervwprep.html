@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Preparation Landing Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background: #fff; /* White background */
+            color: #333; /* Dark text color */
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+       
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #333; /* Dark text color for links */
+            text-decoration: none;
+            padding: 5px 10px; /* Adding padding for links */
+        }
+
+        nav ul li a:hover {
+            color: #eceef1; /* Color change on hover */
+            background-color: #500480;
+        }
+
+        .hero {
+            background: #f4f4f4;
+            padding: 60px 0;
+            text-align: center;
+            
+        }
+
+        .hero h2 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .hero p {
+            margin: 20px 0;
+            font-size: 1.2em;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            background: #333;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #555;
+        }
+
+        section {
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form label {
+            margin-top: 10px;
+        }
+
+        form input, form textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        form button {
+            margin-top: 20px;
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background: #555;
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        h3{
+            color:#500480;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <h1><span style="color: #500480;"> PRO  </span><span style="color: #ff7700;"> TERN </span></h1>
+               
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <section id="home" class="hero">
+        <div class="container">
+            <h2>Prepare for Your Dream Job</h2>
+            <p>Get ready with our comprehensive tools and resources.</p>
+            <button onclick="showAlert()">Get Started</button>
+        </div>
+    </section>
+    <section id="features">
+        <div class="container">
+            <h2>Our Features</h2>
+            <div class="feature">
+               <a href="/resumeBuilder"><h3>Resume Builder</h3></a> 
+                <p>Create a professional resume in minutes.</p>
+            </div>
+            <div class="feature">
+               <a href="/tips"><h3>Interview Tips</h3></a> 
+                <p>Get expert advice on acing your interviews.</p>
+            </div>
+            <div class="feature">
+                <a href="/joblist"><h3>Job Listings</h3></a>
+                <p>Access a wide range of job opportunities.</p>
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <form id="contactForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Protern. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        function showAlert() {
+            alert('Welcome to JobPrep! Let’s get started with your job preparation journey.');
+        }
+
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Your message has been sent successfully!');
+        });
+    </script>
+</body>
+</html>

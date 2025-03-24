@@ -1,0 +1,380 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link 
+      rel="stylesheet" 
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      />
+    <link 
+    rel="stylesheet" 
+    href="../css/mainstyle.css" 
+    />
+
+
+
+
+    <title>Student Homepage</title>
+
+
+  </head>
+  <body>
+    <nav>
+      <div class="nav__header">
+        <div class="nav__logo">
+          <a href="#" class="logo">PRO<span>TERN</span></a>
+        </div>
+        <div class="nav__menu__btn" id="menu-btn">
+          <i class="ri-menu-line"></i>
+        </div>
+      </div>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#job">Students</a></li>
+        <li class="dropdown-nav">
+          <a href="#">Employers </a>
+        </li>
+        <li><a href="#client">Contact</a></li>
+        <button class="btn" onclick="signup()">SignUp</button>
+        <li class="dropdown-nav">
+          <button class="btn" onclick="login()" >Login</button>         
+        </li>
+        </li>
+      </ul>
+    </nav>
+
+
+    
+    <header class="header__container" id="home" >
+      <div class="section__container header__container">
+      <img src="../images/CRED.png" alt="header" />
+      <img src="../images/Ditto.png" alt="header" />
+      <img src="../images/Stockgro.png" alt="header" />
+      <img src="../images/InMobi.jpeg" alt="header" />
+      <img src="../images/Boat.jpg" alt="header" />
+      <img src="../images/dotpe.png " alt="header" />
+      <img src="../images/practo.png" alt="header" />
+      <img src="../images/livspace.jpg" alt="header" />
+      <h2>
+        <img src="../images/bag.png" alt="bag" />
+        StartUp Internship Portal
+      </h2>
+      <h1>Find the Best <br><span>StartUp Internship</span><br>For your Future</h1>
+      <p>
+        Your future starts here. Discover countless opportunities, take action
+        by applying to StartUp Internships that match your skills and aspirations, and
+        transform your career.
+      </p>
+
+    </header>
+
+
+     
+        
+        <div class="section__container option-container">
+          <div class="opt-div">
+            <div class="opt-content">
+              <div>
+                <h2>For Students</h2>
+                <p>Connect with professionals worldwide, spanning a wide range of skills and expertise.</p>
+              </div>
+              <img alt="Student" src="../images/intern.png" />
+            </div class="section__container search" >
+            <button class="keyword" onclick="getInternship()">Get Internships</button>
+          </div>
+        
+          <div class="opt-div">
+            <div class="opt-content">
+              <div>
+                <h2>For Employers</h2>
+                <p>Build a compelling professional profile and unlock new hiring opportunities.</p>
+              </div>
+              <img alt="Employers"  src="../images/hire post.png" />
+            </div class="section__container search">
+            <button class="keyword" onclick="postInternship()">Post Internships</button>
+          </div>
+        </div>
+        
+        
+
+
+
+
+        <div class="section__container info">
+          <div class="stat">
+            <div class="icon">
+              <img src="../images/ani.gif" alt="Company Icon" class="stat-icon">     
+            </div>
+            <div>
+              <h2>+2,000</h2>
+              <p>Available Internships</p>
+            </div>
+          </div>
+          <div class="stat">
+            <div class="icon">
+              <img src="../images/com.gif" alt="Company Icon" class="stat-icon">
+            </div>
+            <div>
+              <h2>+1,500</h2>
+              <p>StartUp Companies</p>
+            </div>
+          </div>
+          <div class="stat">
+            <div class="icon">
+              <img src="../images/user.gif" alt="Company Icon" class="stat-icon">
+            </div>
+            <div>
+              <h2>+9,000</h2>
+              <p>Active Users</p>
+            </div>
+          </div>
+        </div>
+    
+
+
+
+
+
+    <section class="steps" id="about">
+      <div class="section__container steps__container">
+        <h2 class="section__header">
+          Get Hired in 4 <span>Quick Easy Steps</span>
+        </h2>
+        <p class="section__description">
+          Follow Our Simple, Step-by-Step Guide to Quickly Land Your Dream Job
+          and Start Your New Career Journey.
+        </p>
+        <div class="steps__grid">
+          <div class="steps__card">
+            <span><i class="ri-user-fill"></i></span>
+            <h4>Create an Account</h4>
+            <p>
+              Sign up with just a few clicks to unlock exclusive access to a
+              world of internship opportunities and landing your dream career. It's quick,
+              easy, and completely free.
+            </p>
+          </div>
+          <div class="steps__card">
+            <span><i class="ri-search-fill"></i></span>
+            <h4>Search Internship</h4>
+            <p>
+              Dive into our internship database tailored to match your skills and
+              preferences. With our search filters, finding the perfect
+              internship has never been easier.
+            </p>
+          </div>
+          <div class="steps__card">
+            <span><i class="ri-file-paper-fill"></i></span>
+            <h4>Upload Resume</h4>
+            <p>
+              Showcase your experience by uploading your CV or resume. Let
+              employers know why you're the perfect candidate for their Internship
+              openings.
+            </p>
+          </div>
+          <div class="steps__card">
+            <span><i class="ri-briefcase-fill"></i></span>
+            <h4>Get Internship</h4>
+            <p>
+              Take the final step towards your new career. Get ready to embark
+              on your professional journey and secure the internship you've been
+              dreaming of a StartUp.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="section__container client__container" id="client">
+      <h2 class="section__header">What Our <span>Client Say</span></h2>
+      <p class="section__description">
+        Read Testimonials and Success Stories from Our Satisfied Internship Seekers to See How We Make a Difference
+      </p>
+      <!-- Slider main container -->
+      <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <div class="client__card">
+              <img src="../images/Sarah patel.png" alt="client" />
+              <p>
+                As a student, I found the internship portal incredibly helpful. 
+                The advanced search features made it easy to find relevant opportunities, 
+                and the interface was intuitive and user-friendly. 
+                The platform simplifies the process of applying for internships 
+                and navigating the site efficiently.
+              </p>
+              <div class="client__ratings">
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+              </div>
+              <h4>Sarah Patel</h4>
+              <h5>Graphic Designer Intern</h5>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="client__card">
+              <img src="../images/Swapnil Patil.jpg" alt="client" />
+              <p>
+                As a Second Year Student, I was unsure where to start my Internship search.
+                This website guided me through the process step by step. From
+                creating my profile to applying Internships, everything was
+                seamless. I'm now happily interning thanks to this platform!
+              </p>
+              <div class="client__ratings">
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-half-fill"></i></span>
+              </div>
+              <h4>Swapnil Patil</h4>
+              <h5>IIDE Intern</h5>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="client__card">
+              <img src="../images/Karan Shah.jpg" alt="client" />
+              <p>
+                Creating an account was a breeze, and I was amazed by the number
+                of internship opportunities available. Thanks to this website, I found
+                the perfect internship that aligned perfectly with my career
+                goals.
+              </p>
+              <div class="client__ratings">
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+              </div>
+              <h4>Karan Shah</h4>
+              <h5>Software Developer Intern</h5>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-prev">
+        </div>
+        <div class="swiper-button-next">
+        </div>
+      </div>
+    </section>
+    
+
+
+
+
+
+
+
+
+
+
+    <footer class="footer">
+      <div class="section__container footer__container">
+        <div class="footer__col">
+          <div class="footer__logo">
+            <a href="#" class="logo">PRO<span>TERN</span></a>
+          </div>
+          <p>
+            Our platform is designed to help you find the perfect StartUp Internships and
+            achieve your professional dreams.
+          </p>
+        </div>
+        <div class="footer__col">
+          <h4>Quick Links</h4>
+          <ul class="footer__links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Search</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Follow Us</h4>
+          <ul class="footer__links">
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Youtube</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Contact Us</h4>
+          <ul class="footer__links">
+            <li>
+              <a href="#">
+                <span><i class="ri-phone-fill"></i></span> +91 70219 08374
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span><i class="ri-map-pin-2-fill"></i></span> Ramnarain Ruia Autonomous College, Matunga(E), Mumbai
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bar">
+        Copyright © 2024 Protern A StartUp Internship Platform. All rights reserved.
+      </div>
+    </footer>
+
+
+
+
+
+
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="main.js"></script>
+    <script>
+      function login(){
+        window.location.assign("/login/student");
+      }
+      function signup(){
+        window.location.assign("/signup/student");
+      }
+      function getInternship(){
+        window.location.assign("/viewInternships");
+      }
+      function postInternship(){
+        window.location.assign("/startup/postjob");
+      }
+    </script>
+  </body>
+</html>

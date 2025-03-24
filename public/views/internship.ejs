@@ -1,0 +1,83 @@
+<h1>Internship Details</h1>
+
+<div class="container">
+  <% internship.forEach(function(internship) { %> <!-- Loop through each internship -->
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Internship Title</h2>
+        <p><%= internship.internship_title %></p>
+      </div>
+      <div class="col-md-6">
+        <h2>Internship Description</h2>
+        <p><%= internship.internship_description %></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Location</h2>
+        <p>State: <%= internship.location.state || 'Not specified' %></p>
+        <p>City: <%= internship.location.city || 'Not specified' %></p>
+      </div>
+      <div class="col-md-6">
+        <h2>Stipend</h2>
+        <p>Min: <%= internship.stipend.min || 'Not specified' %></p>
+        <p>Max: <%= internship.stipend.max || 'Not specified' %></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Skills</h2>
+        <% if (internship.skills && internship.skills.length > 0) { %>
+          <ul>
+            <% internship.skills.forEach(function(skill) { %>
+              <li><%= skill %></li>
+            <% }); %>
+          </ul>
+        <% } else { %>
+          <p>No skills specified</p>
+        <% } %>
+      </div>
+
+      <div class="col-md-6">
+        <h2>Industries</h2>
+        <% if (internship.industries && internship.industries.length > 0) { %>
+          <ul>
+            <% internship.industries.forEach(function(industry) { %>
+              <li><%= industry %></li>
+            <% }); %>
+          </ul>
+        <% } else { %>
+          <p>No industries specified</p>
+        <% } %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Company Details</h2>
+        <% if (internship.company_details) { %>
+          <p>Company Name: <%= internship.company_details.company_name || 'Not specified' %></p>
+          <p>Contact Person Name: <%= internship.company_details.contact_person_name || 'Not specified' %></p>
+          <p>Phone Number: <%= internship.company_details.phone_number || 'Not specified' %></p>
+          <p>Email ID: <%= internship.company_details.email_id || 'Not specified' %></p>
+          <p>Contact Person Profile: <%= internship.company_details.contact_person_profile || 'Not specified' %></p>
+          <p>Org Size: <%= internship.company_details.org_size || 'Not specified' %></p>
+          <p>Job Address: <%= internship.company_details.job_address || 'Not specified' %></p>
+        <% } else { %>
+          <p>Company details not available</p>
+        <% } %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Hiring Frequency</h2>
+        <p><%= internship.hiring_frequency || 'Not specified' %></p>
+      </div>
+    </div>
+
+    <hr>
+  <% }); %> <!-- End loop -->
+</div>

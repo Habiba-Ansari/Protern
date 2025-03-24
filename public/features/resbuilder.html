@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #321672;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+            color: #444;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+            color: #555;
+        }
+
+        input, textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 5px;
+            width: 100%; /* Make inputs full width */
+        }
+
+        textarea {
+            resize: vertical; /* Allow vertical resizing */
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 1em;
+            border: none;
+            background: #4d2383;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #555;
+        }
+
+        #resumeOutput {
+            margin-top: 20px;
+        }
+
+        .entry {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .resume-section {
+            margin-bottom: 20px;
+        }
+
+        .resume-section h3 {
+            margin: 0;
+            color: #333;
+        }
+
+        .resume-section p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .delete-btn {
+            margin-top: 10px;
+            background: red;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Resume Builder</h1>
+        <form id="resumeForm">
+            <h2>Personal Information</h2>
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required>
+            
+            <label for="summary">Professional Summary:</label>
+            <textarea id="summary" name="summary" rows="4" required></textarea>
+
+            <h2>Education</h2>
+            <div id="educationContainer">
+                <div class="entry">
+                    <label for="college1">College Name:</label>
+                    <input type="text" id="college1" name="college1" required>
+                    
+                    <label for="collegeLocation1">College Location:</label>
+                    <input type="text" id="collegeLocation1" name="collegeLocation1" required>
+                    
+                    <label for="fieldOfStudy1">Field of Study:</label>
+                    <input type="text" id="fieldOfStudy1" name="fieldOfStudy1" required>
+                    
+                    <label for="qualification1">Qualification:</label>
+                    <input type="text" id="qualification1" name="qualification1" required>
+                    
+                    <label for="gradYear1">Graduation Year:</label>
+                    <input type="text" id="gradYear1" name="gradYear1" required>
+                    
+                    <button type="button" class="delete-btn" onclick="deleteEntry(this)">Delete</button>
+                </div>
+            </div>
+            <button type="button" id="addEducationBtn">Add More Education</button>
+
+            <h2>Experience</h2>
+            <div id="experienceContainer">
+                <div class="entry">
+                    <label for="jobTitle1">Job Title:</label>
+                    <input type="text" id="jobTitle1" name="jobTitle1" required>
+                    
+                    <label for="company1">Company:</label>
+                    <input type="text" id="company1" name="company1" required>
+                    
+                    <label for="city1">City:</label>
+                    <input type="text" id="city1" name="city1" required>
+                    
+                    <label for="country1">Country:</label>
+                    <input type="text" id="country1" name="country1" required>
+                    
+                    <label for="jobDescription1">Job Description:</label>
+                    <textarea id="jobDescription1" name="jobDescription1" rows="1" required></textarea>
+                    
+                    <button type="button" class="delete-btn" onclick="deleteEntry(this)">Delete</button>
+                </div>
+            </div>
+            <button type="button" id="addExperienceBtn">Add More Experience</button>
+
+            <h2>Skills</h2>
+            <div id="skillsContainer">
+                <textarea id="skills" name="skills" rows="4" required placeholder="List your skills, separated by commas"></textarea>
+            </div>
+
+            <button type="submit" id="generateResumeBtn">Generate Resume</button>
+        </form>
+
+        <div id="resumeOutput" style="display:none;">
+            <h2>Generated Resume</h2>
+            <div id="resumeContent"></div>
+            <button id="downloadResumeBtn">Download Resume</button>
+        </div>
+    </div>
+
+    <script>
+        function deleteEntry(button) {
+            const entry = button.parentElement;
+            entry.remove();
+        }
+
+        document.getElementById('resumeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const summary = document.getElementById('summary').value;
+            const skills = document.getElementById('skills').value;
+
+            // Collecting Education
+            let educationHtml = '';
+            let i = 1;
+            while (document.getElementById(`college${i}`)) {
+                const college = document.getElementById(`college${i}`).value;
+                const location = document.getElementById(`collegeLocation${i}`).value;
+                const fieldOfStudy = document.getElementById(`fieldOfStudy${i}`).value;
+                const qualification = document.getElementById(`qualification${i}`).value;
+                const gradYear = document.getElementById(`gradYear${i}`).value;
+
+                educationHtml += `
+                    <div class="resume-section">
+                        <h3>${college} - ${location}</h3>
+                        <p><strong>Field of Study:</strong> ${fieldOfStudy}</p>
+                        <p><strong>Qualification:</strong> ${qualification}</p>
+                        <p><strong>Graduation Year:</strong> ${gradYear}</p>
+                    </div>
+                `;
+                i++;
+            }
+
+            // Collecting Experience
+            let experienceHtml = '';
+            let j = 1;
+            while (document.getElementById(`jobTitle${j}`)) {
+                const jobTitle = document.getElementById(`jobTitle${j}`).value;
+                const company = document.getElementById(`company${j}`).value;
+                const city = document.getElementById(`city${j}`).value;
+                const country = document.getElementById(`country${j}`).value;
+                const jobDescription = document.getElementById(`jobDescription${j}`).value;
+                
+                experienceHtml += `
+                    <div class="resume-section">
+                        <h3>${jobTitle} at ${company}</h3>
+                        <p><strong>Location:</strong> ${city}, ${country}</p>
+                        <p>${jobDescription}</p>
+                    </div>
+                `;
+                j++;
+            }
+
+            // Resume Content
+            document.getElementById('resumeContent').innerHTML = `
+                <h2>${name}</h2>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Phone:</strong> ${phone}</p>
+                <div class="resume-section">
+                    <h2>Professional Summary</h2>
+                    <p>${summary}</p>
+                </div>
+                <div class="resume-section">
+                    <h2>Education</h2>
+                    ${educationHtml}
+                </div>
+                <div class="resume-section">
+                    <h2>Experience</h2>
+                    ${experienceHtml}
+                </div>
+                <div class="resume-section">
+                    <h2>Skills</h2>
+                    <p>${skills}</p>
+                </div>
+            `;
+
+            document.getElementById('resumeOutput').style.display = 'block';
+        });
+
+        document.getElementById('addEducationBtn').addEventListener('click', function() {
+            const educationContainer = document.getElementById('educationContainer');
+            const educationCount = educationContainer.getElementsByClassName('entry').length + 1;
+            
+            educationContainer.insertAdjacentHTML('beforeend', `
+                <div class="entry">
+                    <label for="college${educationCount}">College Name:</label>
+                    <input type="text" id="college${educationCount}" name="college${educationCount}" required>
+                    
+                    <label for="collegeLocation${educationCount}">College Location:</label>
+                    <input type="text" id="collegeLocation${educationCount}" name="collegeLocation${educationCount}" required>
+                    
+                    <label for="fieldOfStudy${educationCount}">Field of Study:</label>
+                    <input type="text" id="fieldOfStudy${educationCount}" name="fieldOfStudy${educationCount}" required>
+                    
+                    <label for="qualification${educationCount}">Qualification:</label>
+                    <input type="text" id="qualification${educationCount}" name="qualification${educationCount}" required>
+                    
+                    <label for="gradYear${educationCount}">Graduation Year:</label>
+                    <input type="text" id="gradYear${educationCount}" name="gradYear${educationCount}" required>
+                    
+                    <button type="button" class="delete-btn" onclick="deleteEntry(this)">Delete</button>
+                </div>
+            `);
+        });
+
+        document.getElementById('addExperienceBtn').addEventListener('click', function() {
+            const experienceContainer = document.getElementById('experienceContainer');
+            const experienceCount = experienceContainer.getElementsByClassName('entry').length + 1;
+            
+            experienceContainer.insertAdjacentHTML('beforeend', `
+                <div class="entry">
+                    <label for="jobTitle${experienceCount}">Job Title:</label>
+                    <input type="text" id="jobTitle${experienceCount}" name="jobTitle${experienceCount}" required>
+                    
+                    <label for="company${experienceCount}">Company:</label>
+                    <input type="text" id="company${experienceCount}" name="company${experienceCount}" required>
+                    
+                    <label for="city${experienceCount}">City:</label>
+                    <input type="text" id="city${experienceCount}" name="city${experienceCount}" required>
+                    
+                    <label for="country${experienceCount}">Country:</label>
+                    <input type="text" id="country${experienceCount}" name="country${experienceCount}" required>
+                    
+                    <label for="jobDescription${experienceCount}">Job Description:</label>
+                    <textarea id="jobDescription${experienceCount}" name="jobDescription${experienceCount}" rows="1" required></textarea>
+                    
+                    <button type="button" class="delete-btn" onclick="deleteEntry(this)">Delete</button>
+                </div>
+            `);
+        });
+
+        document.getElementById('downloadResumeBtn').addEventListener('click', function() {
+            const resumeContent = document.getElementById('resumeContent').innerHTML;
+            const blob = new Blob([resumeContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'resume.html';
+            a.click();
+            
+            URL.revokeObjectURL(url);
+        });
+    </script>
+</body>
+</html>
